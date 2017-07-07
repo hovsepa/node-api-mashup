@@ -7,3 +7,8 @@ my-tweets nodemashups
 spotify-this-song space oddity
 do-what-it-says undefined
 my-tweets startupgraveyrd
+my-tweets nodemashups
+spotify-this-song kangaroo court
+movie-this Mr+Nobody
+do-what-it-says undefined
+my-tweets startupgraveyrd
