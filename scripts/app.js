@@ -1,3 +1,4 @@
+var request = require('request');
 // MODULES
 const keys = require('./keys');
 const Twitter = require('twitter');
@@ -21,7 +22,7 @@ var letsGo = () => {
     }
     if (userInput1 === "spotify-this-song") {
       if (!userInput2) {
-        userInput2 = "The Sign";
+        userInput2 = "The Sign"; //0hrBpAOgrt8RXigk83LLNE
       }
       spot();
     }
@@ -87,19 +88,17 @@ var spot = () => {
     var cleanSpotify = JSON.stringify(data, null, 2);
     var theData = data.tracks.items;
     theData.forEach(function(item) {
-      console.log(chalk.bgBlue(item.artists[0].name), chalk.blue(item.name), item.album.name, chalk.dim(item.external_urls.spotify));
+      console.log(chalk.bgBlue(item.artists[0].name), chalk.blue(item.name), item.album.name, chalk.dim(item.external_urls.spotify), chalk.dim(item.id));
     });
   });
 }
 
 var omdb = () => {
-  var request = require('request');
+
   request('http://www.omdbapi.com/' + '?apikey=40e9cece&t=' + userInput2, function(error, response, body) {
     console.log('error:', error); // Print the error if one occurred
     // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-
     var cleanOMDB = JSON.parse(body, null, 2); // Print the HTML for the Google homepage
-
     console.log(chalk.bgBlue.grey.bold(cleanOMDB.Title), cleanOMDB.Year, cleanOMDB.Language);
     console.log(chalk.blue.bold("IMDb Rating:"), cleanOMDB.Ratings[0].Value);
     console.log(chalk.blue.bold("Rotten Tomatoes Rating:"), cleanOMDB.Ratings[1].Value);
